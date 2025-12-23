@@ -235,7 +235,6 @@ body {
 /* Prevent scroll jumping on sections */
 section {
   position: relative;
-  contain: layout;
 }
 
 /* Fix for iOS Safari bottom bar */
@@ -251,21 +250,11 @@ section {
 
 /* Prevent layout shift during animations */
 @media (max-width: 768px) {
-  * {
-    /* Prevent elements from causing layout shift */
-    contain: layout style paint;
-  }
-  
   /* Optimize touch scrolling */
   body {
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
-  }
-  
-  /* Prevent jumpy animations on mobile */
-  section {
-    will-change: auto;
   }
 }
 

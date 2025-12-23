@@ -56,7 +56,6 @@ export default function Hero() {
       style={{ 
         minHeight: viewportHeight,
         height: 'auto',
-        contain: 'layout style paint',
       }}
     >
       {/* Animated background */}
