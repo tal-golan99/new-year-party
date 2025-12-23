@@ -79,18 +79,20 @@ export default function Countdown() {
           className="text-center"
         >
           <motion.div 
-            className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[80px] md:min-w-[100px] relative overflow-hidden group"
+            className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[60px] sm:min-w-[80px] md:min-w-[100px] relative overflow-hidden group hw-accelerate"
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400 }}
+            style={{ willChange: 'transform' }}
           >
             {/* Glow effect on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ zIndex: 1 }} />
             
             <motion.span 
               key={unit.value}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-2xl sm:text-3xl md:text-5xl font-bold gradient-text font-display relative z-10"
+              style={{ willChange: 'opacity, transform' }}
             >
               {String(unit.value).padStart(2, '0')}
             </motion.span>

@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="relative bg-midnight min-h-screen">
+    <main className="relative bg-midnight min-h-screen overflow-x-hidden w-full max-w-full">
       {/* Hero Section */}
       <Hero />
       

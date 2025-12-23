@@ -1,33 +1,57 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
 import { Sparkles } from 'lucide-react'
 import Countdown from './Countdown'
 
 export default function Hero() {
   const ref = useRef(null)
+  const prefersReducedMotion = useReducedMotion()
+  const [viewportHeight, setViewportHeight] = useState('100vh')
+
+  useEffect(() => {
+    // Use dynamic viewport height for mobile browsers
+    const setHeight = () => {
+      setViewportHeight(`${window.innerHeight}px`)
+    }
+    
+    setHeight()
+    window.addEventListener('resize', setHeight)
+    
+    return () => window.removeEventListener('resize', setHeight)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start start', 'end start']
+    offset: ['start start', 'end start'],
+    layoutEffect: false
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0])
+  // Smoother parallax with less aggressive movement
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.7, 0])
 
   const ticketUrl = 'https://get-in.com/en/412012?seller_code=getin'
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      ref={ref} 
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{ 
+        minHeight: viewportHeight,
+        willChange: 'transform'
+      }}
+    >
       {/* Animated background */}
-      <div className="absolute inset-0 bg-animated-gradient" />
+      <div className="absolute inset-0 bg-animated-gradient hw-accelerate" />
       
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-deep-purple/40 via-midnight/60 to-midnight" />
+      <div className="absolute inset-0 bg-gradient-radial from-deep-purple/40 via-midnight/60 to-midnight hw-accelerate" />
       
-      {/* Floating particles */}
+      {/* Floating particles - reduced on mobile for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {!prefersReducedMotion && [...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full"
@@ -55,8 +79,12 @@ export default function Hero() {
 
       {/* Content */}
       <motion.div 
-        style={{ y, opacity }}
-        className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto"
+        style={{ 
+          y: prefersReducedMotion ? 0 : y, 
+          opacity: prefersReducedMotion ? 1 : opacity,
+          willChange: 'transform, opacity'
+        }}
+        className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto hw-accelerate"
       >
         {/* Top badge */}
         <motion.div

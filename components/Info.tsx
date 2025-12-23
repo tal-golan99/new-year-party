@@ -56,11 +56,11 @@ export default function Info() {
   return (
     <section ref={ref} className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-midnight via-deep-purple/20 to-midnight" />
+      <div className="absolute inset-0 bg-gradient-to-b from-midnight via-deep-purple/20 to-midnight hw-accelerate" style={{ zIndex: 0 }} />
       
       {/* Decorative circles */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-electric-purple/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-electric-purple/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 hw-accelerate" style={{ zIndex: 1 }} />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 hw-accelerate" style={{ zIndex: 1 }} />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section title */}
@@ -92,26 +92,28 @@ export default function Info() {
               <motion.div
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: 'spring', stiffness: 400 }}
-                className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center h-full relative overflow-hidden"
+                className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center h-full relative overflow-hidden hw-accelerate"
+                style={{ willChange: 'transform' }}
               >
                 {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ zIndex: 1 }} />
                 
                 {/* Icon */}
                 <motion.div
                   whileHover={{ rotate: 10 }}
-                  className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-deep-purple to-midnight mb-4 sm:mb-6 ${item.color}`}
+                  className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-deep-purple to-midnight mb-4 sm:mb-6 ${item.color} relative z-10`}
+                  style={{ willChange: 'transform' }}
                 >
                   <item.icon className="w-7 h-7 sm:w-8 sm:h-8" />
                 </motion.div>
 
                 {/* Label */}
-                <p className="text-xs sm:text-sm text-gray-400 tracking-[0.2em] mb-2">
+                <p className="text-sm sm:text-sm text-gray-400 tracking-[0.2em] mb-2 relative z-10">
                   {item.label}
                 </p>
 
                 {/* Value */}
-                <p className={`font-display font-bold text-lg sm:text-xl md:text-2xl ${index === 1 ? 'gradient-text' : 'text-white'}`}>
+                <p className={`font-display font-bold text-xl sm:text-xl md:text-2xl relative z-10 ${index === 1 ? 'gradient-text' : 'text-white'}`}>
                   {item.value}
                 </p>
               </motion.div>

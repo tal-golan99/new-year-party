@@ -9,10 +9,10 @@ export default function Footer() {
   return (
     <footer className="relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-purple/30 via-midnight to-midnight" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep-purple/30 via-midnight to-midnight hw-accelerate" style={{ zIndex: 0 }} />
       
       {/* Top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-purple/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-purple/30 to-transparent" style={{ zIndex: 1 }} />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Final CTA */}
@@ -34,9 +34,10 @@ export default function Footer() {
             href={ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-electric-purple via-neon-purple to-royal-purple text-white font-bold text-base sm:text-lg rounded-full animate-pulse-glow transition-all duration-300"
+            className="btn-glow inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-electric-purple via-neon-purple to-royal-purple text-white font-bold text-base sm:text-lg rounded-full animate-pulse-glow transition-all duration-300 hw-accelerate"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            style={{ willChange: 'transform' }}
           >
             <span className="relative z-10">GET YOUR TICKETS NOW</span>
           </motion.a>
@@ -68,7 +69,7 @@ export default function Footer() {
       </div>
 
       {/* Decorative bottom glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-electric-purple/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-electric-purple/10 rounded-full blur-[100px] hw-accelerate" style={{ zIndex: 1 }} />
     </footer>
   )
 }

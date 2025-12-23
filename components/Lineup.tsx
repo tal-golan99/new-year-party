@@ -66,7 +66,7 @@ export default function Lineup() {
   return (
     <section ref={ref} className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-midnight via-deep-purple/10 to-midnight" />
+      <div className="absolute inset-0 bg-gradient-to-b from-midnight via-deep-purple/10 to-midnight hw-accelerate" style={{ zIndex: 0 }} />
       
       {/* Animated background orbs */}
       <motion.div
@@ -75,7 +75,8 @@ export default function Lineup() {
           opacity: [0.1, 0.2, 0.1],
         }}
         transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-electric-purple/20 rounded-full blur-[150px]"
+        className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-electric-purple/20 rounded-full blur-[150px] hw-accelerate"
+        style={{ zIndex: 1, willChange: 'transform, opacity' }}
       />
       <motion.div
         animate={{
@@ -83,7 +84,8 @@ export default function Lineup() {
           opacity: [0.1, 0.15, 0.1],
         }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[150px]"
+        className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-gold/10 rounded-full blur-[150px] hw-accelerate"
+        style={{ zIndex: 1, willChange: 'transform, opacity' }}
       />
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -128,39 +130,41 @@ export default function Lineup() {
                   z: 50,
                 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className="relative glass rounded-3xl p-6 sm:p-8 overflow-hidden h-full"
+                className="relative glass rounded-3xl p-6 sm:p-8 overflow-hidden h-full hw-accelerate"
+                style={{ willChange: 'transform' }}
               >
                 {/* Gradient border effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${artist.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${artist.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} style={{ zIndex: 1 }} />
                 
                 {/* Top accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${artist.gradient}`} />
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${artist.gradient}`} style={{ zIndex: 2 }} />
 
                 {/* Icon container */}
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.8 }}
-                  className={`w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${artist.gradient} p-[2px]`}
+                  className={`w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${artist.gradient} p-[2px] relative z-10`}
+                  style={{ willChange: 'transform' }}
                 >
-                  <div className="w-full h-full rounded-2xl bg-midnight flex items-center justify-center">
+                  <div className="w-full h-full rounded-2xl bg-midnight flex items-center justify-center hw-accelerate">
                     <artist.icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                   </div>
                 </motion.div>
 
                 {/* Artist info */}
-                <div className="text-center relative z-10">
+                <div className="text-center relative z-20">
                   <h3 className={`font-display font-bold text-xl sm:text-2xl md:text-3xl mb-3 bg-gradient-to-r ${artist.gradient} bg-clip-text text-transparent`}>
                     {artist.name}
                   </h3>
                   {artist.genre && (
-                    <p className="text-gray-400 text-sm sm:text-base">
+                    <p className="text-gray-400 text-base sm:text-base">
                       {artist.genre}
                     </p>
                   )}
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-deep-purple/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-deep-purple/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ zIndex: 1 }} />
                 
                 {/* Animated dots */}
                 <motion.div

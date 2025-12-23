@@ -6,9 +6,15 @@ A modern, high-end landing page for a New Year's Eve party built with Next.js 14
 
 - **Dark Nightclub Aesthetic** - Deep blacks, vibrant purples, and gold accents
 - **Live Countdown Timer** - Real-time countdown to the event
-- **Smooth Animations** - Framer Motion powered fade-ins and parallax effects
-- **Mobile-First Design** - Optimized for smartphones and social media sharing
+- **Smooth Animations** - Hardware-accelerated animations with Framer Motion
+- **Mobile-Optimized** - Enhanced performance and UX for mobile devices
+  - Dynamic viewport height handling for iOS Safari
+  - Hardware-accelerated transforms and opacity
+  - Reduced motion support for accessibility
+  - Fixed scroll glitches and viewport issues
+  - Optimized typography for mobile readability
 - **Glowing CTAs** - Eye-catching ticket buttons with pulsing glow effects
+- **Performance Optimized** - Using will-change, translateZ, and proper z-index stacking
 
 ## Getting Started
 
@@ -71,8 +77,19 @@ npm run dev
 - [Next.js 14](https://nextjs.org/) - React framework with App Router
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first styling
-- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Framer Motion](https://www.framer.com/motion/) - Hardware-accelerated animations
 - [Lucide React](https://lucide.dev/) - Icons
+
+## Mobile Optimizations
+
+This landing page has been extensively optimized for mobile devices:
+
+- **Viewport Handling**: Uses dynamic viewport units (dvh) and -webkit-fill-available for iOS Safari
+- **Smooth Scrolling**: Optimized parallax effects with reduced motion support
+- **Hardware Acceleration**: All animations use transform and opacity with proper will-change hints
+- **Z-Index Management**: Clean stacking contexts prevent element overlays
+- **Typography**: Mobile-first font sizes (18px+ for readability)
+- **Performance**: Reduced backdrop-filter blur on mobile, optimized particle animations
 
 ## License
 
