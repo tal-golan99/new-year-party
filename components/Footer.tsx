@@ -34,10 +34,12 @@ export default function Footer() {
             href={ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-electric-purple via-neon-purple to-royal-purple text-white font-bold text-base sm:text-lg rounded-full animate-pulse-glow transition-all duration-300 hw-accelerate"
-            whileHover={{ scale: 1.05 }}
+            className="btn-glow inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-electric-purple via-neon-purple to-royal-purple text-white font-bold text-base sm:text-lg rounded-full animate-pulse-glow hw-accelerate"
             whileTap={{ scale: 0.95 }}
-            style={{ willChange: 'transform' }}
+            style={{ 
+              willChange: 'transform',
+              touchAction: 'manipulation'
+            }}
           >
             <span className="relative z-10">GET YOUR TICKETS NOW</span>
           </motion.a>

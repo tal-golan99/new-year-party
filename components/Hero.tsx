@@ -48,34 +48,6 @@ export default function Hero() {
       
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 bg-gradient-radial from-deep-purple/40 via-midnight/60 to-midnight hw-accelerate" />
-      
-      {/* Floating particles - reduced on mobile for performance */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {!prefersReducedMotion && [...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 3 === 0 ? '#fbbf24' : '#8b5cf6',
-              boxShadow: i % 3 === 0 
-                ? '0 0 10px #fbbf24, 0 0 20px #fbbf24' 
-                : '0 0 10px #8b5cf6, 0 0 20px #8b5cf6',
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
 
       {/* Content */}
       <motion.div 
@@ -150,11 +122,12 @@ export default function Hero() {
             href={ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center gap-3 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-gold via-soft-gold to-gold text-midnight font-bold text-base sm:text-lg rounded-full animate-pulse-glow transition-all duration-300 hover:scale-105 active:scale-95"
-            whileHover={{ 
-              boxShadow: '0 0 40px rgba(251, 191, 36, 0.6), 0 0 80px rgba(251, 191, 36, 0.3)'
-            }}
+            className="btn-glow inline-flex items-center gap-3 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-gold via-soft-gold to-gold text-midnight font-bold text-base sm:text-lg rounded-full animate-pulse-glow hw-accelerate"
             whileTap={{ scale: 0.95 }}
+            style={{ 
+              willChange: 'transform',
+              touchAction: 'manipulation'
+            }}
           >
             <span className="relative z-10 tracking-wider">GET TICKETS</span>
             <motion.span
