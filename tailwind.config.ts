@@ -24,6 +24,7 @@ const config: Config = {
       },
       animation: {
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'pulse-glow-gold': 'pulse-glow-gold 2s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'sparkle': 'sparkle 1.5s ease-in-out infinite',
         'gradient-shift': 'gradient-shift 8s ease infinite',
@@ -35,6 +36,14 @@ const config: Config = {
           },
           '50%': { 
             boxShadow: '0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5), 0 0 90px rgba(139, 92, 246, 0.3)' 
+          },
+        },
+        'pulse-glow-gold': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(251, 191, 36, 0.5), 0 0 40px rgba(251, 191, 36, 0.3), 0 0 60px rgba(251, 191, 36, 0.1)' 
+          },
+          '50%': { 
+            boxShadow: '0 0 30px rgba(251, 191, 36, 0.8), 0 0 60px rgba(251, 191, 36, 0.5), 0 0 90px rgba(251, 191, 36, 0.3)' 
           },
         },
         'float': {

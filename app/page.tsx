@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero'
+import CTAButton from '@/components/CTAButton'
 import Info from '@/components/Info'
 import Lineup from '@/components/Lineup'
 import Photography from '@/components/Photography'
@@ -9,6 +10,9 @@ export default function Home() {
     <main className="relative bg-midnight min-h-screen overflow-x-hidden w-full max-w-full">
       {/* Hero Section */}
       <Hero />
+      
+      {/* CTA Button Section */}
+      <CTAButton />
       
       {/* Event Info Section */}
       <Info />

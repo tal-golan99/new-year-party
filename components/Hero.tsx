@@ -48,6 +48,34 @@ export default function Hero() {
       
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 bg-gradient-radial from-deep-purple/40 via-midnight/60 to-midnight hw-accelerate" />
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {!prefersReducedMotion && [...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: i % 3 === 0 ? '#fbbf24' : '#8b5cf6',
+              boxShadow: i % 3 === 0 
+                ? '0 0 10px #fbbf24, 0 0 20px #fbbf24' 
+                : '0 0 10px #8b5cf6, 0 0 20px #8b5cf6',
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 1, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Content */}
       <motion.div 
@@ -110,54 +138,6 @@ export default function Hero() {
           className="mb-8 sm:mb-12"
         >
           <Countdown />
-        </motion.div>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <motion.a
-            href={ticketUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center gap-3 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-gold via-soft-gold to-gold text-midnight font-bold text-base sm:text-lg rounded-full animate-pulse-glow hw-accelerate"
-            whileTap={{ scale: 0.95 }}
-            style={{ 
-              willChange: 'transform',
-              touchAction: 'manipulation'
-            }}
-          >
-            <span className="relative z-10 tracking-wider">GET TICKETS</span>
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="relative z-10"
-            >
-              →
-            </motion.span>
-          </motion.a>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-6 h-10 rounded-full border-2 border-electric-purple/50 flex items-start justify-center p-2"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-1.5 h-1.5 rounded-full bg-electric-purple"
-            />
-          </motion.div>
         </motion.div>
       </motion.div>
 

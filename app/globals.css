@@ -161,6 +161,7 @@ body {
 .btn-glow {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .btn-glow::before {
@@ -178,6 +179,8 @@ body {
   );
   transform: rotate(45deg);
   animation: btn-shine 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
 }
 
 @keyframes btn-shine {

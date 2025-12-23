@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import ParticleBackground from '@/components/ParticleBackground'
 
 export const metadata: Metadata = {
   title: 'NEW YEARS EVE STUDENT PARTY 2025',
@@ -21,7 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="noise-overlay" />
-        <ParticleBackground />
         {children}
       </body>
     </html>
