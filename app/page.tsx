@@ -7,7 +7,13 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="relative bg-midnight min-h-screen overflow-x-hidden w-full max-w-full">
+    <main 
+      className="relative bg-midnight min-h-screen overflow-x-hidden w-full max-w-full"
+      style={{
+        overflowAnchor: 'none',
+        touchAction: 'pan-y',
+      }}
+    >
       {/* Hero Section */}
       <Hero />
       

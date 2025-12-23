@@ -13,13 +13,28 @@ export default function Hero() {
   useEffect(() => {
     // Use dynamic viewport height for mobile browsers
     const setHeight = () => {
-      setViewportHeight(`${window.innerHeight}px`)
+      // Use the smallest possible height to prevent jumping
+      const vh = window.innerHeight
+      setViewportHeight(`${vh}px`)
+      // Set CSS custom property for consistent use
+      document.documentElement.style.setProperty('--vh', `${vh * 0.01}px`)
     }
     
     setHeight()
-    window.addEventListener('resize', setHeight)
     
-    return () => window.removeEventListener('resize', setHeight)
+    // Debounce resize events to prevent excessive recalculation
+    let timeoutId: NodeJS.Timeout
+    const handleResize = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(setHeight, 150)
+    }
+    
+    window.addEventListener('resize', handleResize, { passive: true })
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(timeoutId)
+    }
   }, [])
 
   const { scrollYProgress } = useScroll({
@@ -40,7 +55,8 @@ export default function Hero() {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ 
         minHeight: viewportHeight,
-        willChange: 'transform'
+        height: 'auto',
+        contain: 'layout style paint',
       }}
     >
       {/* Animated background */}

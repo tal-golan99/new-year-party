@@ -6,7 +6,7 @@ import { Camera } from 'lucide-react'
 
 export default function Photography() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px', amount: 0.2 })
 
   return (
     <section ref={ref} className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden">

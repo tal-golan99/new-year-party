@@ -6,7 +6,7 @@ import { Clock, MapPin, Calendar } from 'lucide-react'
 
 export default function Info() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px', amount: 0.2 })
 
   const ticketUrl = 'https://get-in.com/en/412012?seller_code=getin'
 
@@ -42,12 +42,12 @@ export default function Info() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
