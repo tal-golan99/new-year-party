@@ -1,0 +1,27 @@
+import Hero from '@/components/Hero'
+import Info from '@/components/Info'
+import Lineup from '@/components/Lineup'
+import Photography from '@/components/Photography'
+import Footer from '@/components/Footer'
+
+export default function Home() {
+  return (
+    <main className="relative bg-midnight min-h-screen">
+      {/* Hero Section */}
+      <Hero />
+      
+      {/* Event Info Section */}
+      <Info />
+      
+      {/* Lineup Section */}
+      <Lineup />
+      
+      {/* Photography Section */}
+      <Photography />
+      
+      {/* Footer with Final CTA */}
+      <Footer />
+    </main>
+  )
+}
+
